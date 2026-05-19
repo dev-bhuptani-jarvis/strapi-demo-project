@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "blocks"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "themeVariant": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "dark",
+        "light",
+        "accent",
+        "success",
+        "warning",
+        "danger",
+        "transparent",
+        "gradient"
+      ]
+    }
+  },
+  "config": {}
+}
