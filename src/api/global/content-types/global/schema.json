@@ -16,6 +16,21 @@
       "type": "string",
       "required": true
     },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.header"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.footer"
+    },
+    "ourClients": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.our-clients"
+    },
     "favicon": {
       "type": "media",
       "multiple": false,

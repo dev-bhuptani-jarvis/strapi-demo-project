@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_catalog_product_items",
+  "info": {
+    "displayName": "Product Item",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "productImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "downloadBrochureLink": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

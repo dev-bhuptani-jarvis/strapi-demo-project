@@ -1,80 +1,87 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SectionsFaq extends Struct.ComponentSchema {
-  collectionName: 'components_sections_faqs';
+export interface CatalogProductItem extends Struct.ComponentSchema {
+  collectionName: 'components_catalog_product_items';
   info: {
-    displayName: 'FAQ';
+    displayName: 'Product Item';
+    icon: 'archive';
   };
   attributes: {
-    items: Schema.Attribute.Component<'shared.faq-item', true>;
-    title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    downloadBrochureLink: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    productImage: Schema.Attribute.Media<'images'>;
   };
 }
 
-export interface SectionsFeatures extends Struct.ComponentSchema {
-  collectionName: 'components_sections_features';
+export interface LayoutFooter extends Struct.ComponentSchema {
+  collectionName: 'components_layout_footers';
   info: {
-    displayName: 'Features';
+    displayName: 'Footer';
+    icon: 'apps';
   };
   attributes: {
-    items: Schema.Attribute.Component<'shared.feature-item', true>;
-    title: Schema.Attribute.String;
+    button: Schema.Attribute.Component<'shared.link', false>;
+    companyText: Schema.Attribute.Text;
+    copyrightText: Schema.Attribute.String;
+    headerInternalLinks: Schema.Attribute.Component<'shared.link', true>;
+    headerText: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'>;
   };
 }
 
-export interface SectionsHeroSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_hero_sections';
+export interface LayoutHeader extends Struct.ComponentSchema {
+  collectionName: 'components_layout_headers';
   info: {
-    displayName: 'Hero';
-    icon: 'alien';
+    displayName: 'Header';
+    icon: 'layout';
   };
   attributes: {
-    backgroundImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    subtitle: Schema.Attribute.Blocks;
-    themeVariant: Schema.Attribute.Enumeration<
-      [
-        'primary',
-        'secondary',
-        'dark',
-        'light',
-        'accent',
-        'success',
-        'warning',
-        'danger',
-        'transparent',
-        'gradient',
-      ]
-    >;
-    title: Schema.Attribute.String;
+    contactButton: Schema.Attribute.Component<'shared.link', false>;
+    logo: Schema.Attribute.Media<'images'>;
+    logoText: Schema.Attribute.String;
+    menuItems: Schema.Attribute.Component<'layout.navigation-item', true>;
   };
 }
 
-export interface SharedFaqItem extends Struct.ComponentSchema {
-  collectionName: 'components_shared_faq_items';
+export interface LayoutNavigationItem extends Struct.ComponentSchema {
+  collectionName: 'components_layout_navigation_items';
   info: {
-    displayName: 'faq-item';
+    displayName: 'Navigation Item';
+    icon: 'bulletList';
   };
   attributes: {
-    answer: Schema.Attribute.RichText;
-    question: Schema.Attribute.String;
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    openInNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    subMenuItems: Schema.Attribute.Component<'shared.link', true>;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SharedFeatureItem extends Struct.ComponentSchema {
-  collectionName: 'components_shared_feature_items';
+export interface LayoutOurClients extends Struct.ComponentSchema {
+  collectionName: 'components_layout_our_clients';
   info: {
-    displayName: 'feature-item';
+    displayName: 'Our Clients';
+    icon: 'manyWays';
   };
   attributes: {
-    description: Schema.Attribute.Blocks;
-    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    images: Schema.Attribute.Media<'images', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedLink extends Struct.ComponentSchema {
+  collectionName: 'components_shared_links';
+  info: {
+    displayName: 'Link';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    openInNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -143,11 +150,12 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'sections.faq': SectionsFaq;
-      'sections.features': SectionsFeatures;
-      'sections.hero-section': SectionsHeroSection;
-      'shared.faq-item': SharedFaqItem;
-      'shared.feature-item': SharedFeatureItem;
+      'catalog.product-item': CatalogProductItem;
+      'layout.footer': LayoutFooter;
+      'layout.header': LayoutHeader;
+      'layout.navigation-item': LayoutNavigationItem;
+      'layout.our-clients': LayoutOurClients;
+      'shared.link': SharedLink;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

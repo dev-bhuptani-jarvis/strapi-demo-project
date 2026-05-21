@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_layout_our_clients",
+  "info": {
+    "displayName": "Our Clients",
+    "icon": "manyWays"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
